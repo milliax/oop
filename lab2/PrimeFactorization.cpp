@@ -1,25 +1,15 @@
 #include "PrimeFactorization.h"
 
-// #define BigValue 10000000000
+bool prime_table[BigValue + 10] = {false};
+vector<int> prime_numbers = {2};
 
 void PrimeFactorization::Get_Prime_Factorization() {
     // FIND Prime
     const int bigger_number = max(num1, num2);
-    // const int bigger_number = 100;
 
-    // Make prime table
-
-    for (int i = 2; i < BigValue; i++) {
-        if (!prime_table[i]) {
-            prime_numbers.push_back(i);
-
-            for (int j = i * i; i < BigValue; j += i) {
-                prime_table[j] = true;
-            }
-        }
-    }
-
-    cout << "Total Primes: " << prime_numbers.size() << endl;
+    if(!prime_table[2]){
+		create_prime_table();
+	}
 
     for (int e : prime_numbers) {
         if (e > num1) {
@@ -55,4 +45,17 @@ void PrimeFactorization::Print_Prime_Factorization() {
 
 void PrimeFactorization::Print_GCD_Factorization() {
     // TODO: Use num1_factor and num2_factor to find GCD and print the result.
+}
+
+void PrimeFactorization::create_prime_table(){
+	// Create Prime Table
+    for (int i = 2; i < BigValue; i++) {
+        if (!prime_table[i]) {
+            prime_numbers.push_back(i);
+            cout << i << " is prime number" << endl;
+            for (int j = i * i; i < BigValue; j += i) {
+                prime_table[j] = true;
+            }
+        }
+    }
 }
