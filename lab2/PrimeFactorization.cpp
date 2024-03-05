@@ -52,8 +52,8 @@ void PrimeFactorization::create_prime_table(){
     for (int i = 2; i < BigValue; i++) {
         if (!prime_table[i]) {
             prime_numbers.push_back(i);
-            cout << i << " is prime number" << endl;
-            for (int j = i * i; i < BigValue; j += i) {
+            // cout << i << " is prime number" << endl;
+            for (int j = i * i; j < BigValue; j += i) {
                 prime_table[j] = true;
             }
         }

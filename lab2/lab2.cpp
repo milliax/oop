@@ -1,5 +1,4 @@
 #include <iostream>
-#define BigValue 20000000
 
 #include "PrimeFactorization.h"
 
