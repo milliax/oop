@@ -4,27 +4,26 @@
 
 using namespace std;
 
-int main()
-{
-	int n;
-	cin >> n;
+int main() {
+    int n;
+    cin >> n;
 
-	while (n--)
-	{
-		int a, b;
-		cin >> a >> b;
+    while (n--) {
+        int a, b;
+        cin >> a >> b;
 
-		cout << "num1 = " << a << endl;
-		cout << "num2 = " << b << endl;
+        cout << "num1 = " << a << endl;
+        cout << "num2 = " << b << endl;
 
-		PrimeFactorization PF(a, b);
+        PrimeFactorization PF(a, b);
 
-		PF.Get_Prime_Factorization();
-		PF.Print_Prime_Factorization();
-		PF.Print_GCD_Factorization();
+        PF.Get_Prime_Factorization();
+        PF.Print_Prime_Factorization();
+        PF.Print_GCD_Factorization();
 
-		cout << endl;
-	}
+        cout << endl;
+        return 0;
+    }
 
-	return 0;
+    return 0;
 }
