@@ -5,8 +5,6 @@
 using namespace std;
 
 int main() {
-    cin.tie(0);
-    ios::sync_with_stdio(false);
     int n;
     cin >> n;
 
@@ -23,8 +21,8 @@ int main() {
         PF.Print_Prime_Factorization();
         PF.Print_GCD_Factorization();
 
-        cout << endl;
-        return 0;
+        cout << endl << endl;
+    
     }
 
     return 0;
