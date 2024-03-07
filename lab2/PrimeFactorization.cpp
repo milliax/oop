@@ -3,35 +3,35 @@
 #include <cstring>
 #include <iostream>
 
-bool flag = false;
-bool prime_table[BigValue + 10] = {true};
-vector<int> prime_numbers;
-
 void PrimeFactorization::Get_Prime_Factorization() {
-    // FIND Prime
-    const int bigger_number = max(num1, num2);
+    // const int bigger_number = max(num1, num2);
 
-    if (!flag) {
-        // cout << "Create prime table" << endl;
-        create_prime_table();
-        flag = true;
-    }
+    int number1 = num1;
 
-    for (int e : prime_numbers) {
-        if (e > num1) {
+    for (int i = 2; i <= num1; ++i) {
+        if (number1 == 1) {
             break;
         }
-        if (num1 % e == 0) {
-            num1_factor.emplace_back(e);
+
+        if (number1 % i == 0) {
+            num1_factor.emplace_back(i);
+            do {
+                number1 /= i;
+            } while (number1 % i == 0);
         }
     }
 
-    for (int e : prime_numbers) {
-        if (e > num2) {
+    int number2 = num2;
+    for (int i = 2; i <= num2; ++i) {
+        if (number2 == 1) {
             break;
         }
-        if (num2 % e == 0) {
-            num2_factor.emplace_back(e);
+
+        if (number2 % i == 0) {
+            num2_factor.emplace_back(i);
+            do {
+                number2 /= i;
+            } while (number2 % i == 0);
         }
     }
 }
@@ -121,20 +121,8 @@ void PrimeFactorization::Print_GCD_Factorization() {
             vis = true;
         }
     }
-}
 
-void PrimeFactorization::create_prime_table() {
-    // init
-    memset(prime_table, true, sizeof(prime_table));
-
-    // Create Prime Table
-    for (int i = 2; i < BigValue; i++) {
-        if (prime_table[i]) {
-            prime_numbers.push_back(i);
-            // cout << i << " is prime number" << endl;
-            for (int j = i * 2; j < BigValue; j += i) {
-                prime_table[j] = false;
-            }
-        }
+    if (!vis) {
+        cout << 1 << endl;
     }
 }
