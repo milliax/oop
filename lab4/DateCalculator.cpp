@@ -11,6 +11,11 @@ void DateCalculator::readFile(const char *fileName) {
     ifstream rfile;
     rfile.open(fileName);
 
+    if (!rfile.is_open()) {
+        cout << "File not Found " << endl;
+        return;
+    }
+
     string str;
     stringstream ss;
 
@@ -30,6 +35,8 @@ void DateCalculator::readFile(const char *fileName) {
         inputDates.push_back(
             {year, month, day, (sign == '+' ? delta : (delta * -1))});
     }
+
+    rfile.close();
 }
 
 DateTime DateCalculator::add(DateTime toModifyDate) {
@@ -38,6 +45,11 @@ DateTime DateCalculator::add(DateTime toModifyDate) {
 
     // cout << "Iteration: " << toModifyDate.year << "/" << toModifyDate.month
     //      << "/" << toModifyDate.day << " " << toModifyDate.delta << endl;
+
+    // cout << setw(4) << setfill('0') << toModifyDate.year << "/";
+    // cout << setw(2) << toModifyDate.month << "/";
+    // cout << setw(2) << toModifyDate.day << " "
+    //      << toModifyDate.delta << endl;
 
     if (toModifyDate.delta > 0) {
         if (toModifyDate.day + toModifyDate.delta > daysInThisMonth) {
@@ -57,8 +69,8 @@ DateTime DateCalculator::add(DateTime toModifyDate) {
                     toModifyDate.day + toModifyDate.delta, 0});
     } else {
         return minus({
-            toModifyDate.year + (toModifyDate.month / 12),
-            (toModifyDate.month - 1) % 12 + 1,
+            toModifyDate.year,
+            toModifyDate.month,
             toModifyDate.day,
             toModifyDate.delta,
         });
@@ -73,6 +85,8 @@ DateTime DateCalculator::add(DateTime toModifyDate) {
 }
 
 DateTime DateCalculator::minus(DateTime toModifyDate) {
+    // cout << "minus" << endl;
+
     // Calculate the date minus the changeDays.
     if (toModifyDate.day + toModifyDate.delta > 0) {
         return {toModifyDate.year, toModifyDate.month,
@@ -171,10 +185,12 @@ bool DateCalculator::isLeapYear(int year) {
             // not leap year
             if (year % 400 == 0) {
                 // is leap year
+                // cout << "it's leap" << endl;
                 return true;
             }
             return false;
         }
+        // cout << "it's leap" << endl;
         return true;
     }
     return false;
