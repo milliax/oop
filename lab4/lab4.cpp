@@ -1,14 +1,19 @@
+#include <fstream>
 #include <iostream>
 
 #include "DateCalculator.h"
 
 using namespace std;
 
-int main()
-{
-	DateCalculator calculator;
-	calculator.readFile("Sample_Input.txt");
-	//calculator.readFile("Hidden_Input.txt");
+int main() {
+    DateCalculator calculator;
+    calculator.readFile("Sample_Input.txt");
+    // calculator.readFile("Hidden_Input.txt");
 
-	return 0;
+    while(!calculator.is_finish()){
+        calculator.count();
+        calculator.showDay();
+        calculator.next();
+    }
+    return 0;
 }
