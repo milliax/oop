@@ -8,13 +8,20 @@
 #include "Pikachu.h"
 #include "Pokemon.h"
 #include "Trainer.h"
+
 using namespace std;
+
 int main() {
     // Read the data from the txt file.
 
     fstream rfile;
     // rfile.open("Sample_Input.txt", ios::in);
     rfile.open("Hidden_Input.txt", ios::in);
+
+    if(!rfile.is_open()){
+        cout << "File Not Opened\n" <<endl;
+        return -1;
+    }
 
     string pokemonType, nickname, tempString;
     int hp, attack, defense, specialAttack, specialDefense, speed;
@@ -24,6 +31,7 @@ int main() {
 
     getline(rfile, tempString);
     int n = stoi(tempString);
+
     for (int i = 0; i < n; ++i) {
         getline(rfile, tempString);
         string deliminator = ", ";
@@ -96,6 +104,8 @@ int main() {
         trainer->changePokemon(p);
         cout << endl;
     }
+
+    rfile.close();
 
     return 0;
 }

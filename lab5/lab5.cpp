@@ -24,7 +24,8 @@ void readFile(const char* filename) {
 }
 
 int main() {
-    readFile("Sample_Input.txt");
+    // readFile("Sample_Input.txt");
+    readFile("Hidden_Input.txt");
 
     if (!input.is_open() || !output.is_open()) {
         if (!input.is_open()) {
@@ -62,6 +63,9 @@ int main() {
                 break;
         }
     }
+
+    output.close();
+    input.close();
 
     return 0;
 }

@@ -65,7 +65,7 @@ ostream& operator<<(ostream& out, const Time& time) {
 }
 
 void Time::format(Time& time) {
-    if (time.hour > 0 && time.hour < 24 && time.minute > 0 &&
+    if (time.minute > 0 &&
         time.minute < 60 && time.second > 0 && time.second < 60) {
         // the format is perfect
         return;

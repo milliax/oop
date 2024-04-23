@@ -15,7 +15,7 @@ void Trainer::changePokemon(Pokemon* pokemon) {
     Mimikyu* mimikyu = dynamic_cast<Mimikyu*>(pokemon);
 
     if (charizard != nullptr) {
-        cout << "Trainer " << this->name << "changes Pokemon successfully";
+        cout << "Trainer " << this->name << " changes Pokemon successfully";
         // this->pokemon = charizard;
     } else {
         if (pikachu != nullptr) {

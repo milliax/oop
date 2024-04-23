@@ -4,7 +4,7 @@ Pikachu::Pikachu(int hp, int attack, int defense, int specialAttack,
                  int specialDefense, int speed)
     : Pokemon(hp, attack, defense, specialAttack, specialDefense, speed) {
     // Initialize the default nickname
-    this->nickname = "Pikachu";
+    this->nickname = "Dummy";
 }
 
 void Pikachu::description() {
