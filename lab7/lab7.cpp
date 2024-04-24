@@ -1,5 +1,5 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -14,60 +14,66 @@ using namespace std;
 #define OP_REVERSE 'r'
 #define OP_SWAP 's'
 
-void readFile(const char* filename)
-{
-	ifstream input(filename);
-	stringstream ss;
+void readFile(const char* filename) {
+    ifstream input(filename);
+    stringstream ss;
 
-	string line;
+    if (!input.is_open()) {
+        cout << "File Not Found" << endl;
+        return;
+    }
 
-	char op;
-	int value, index1, index2;
+    string line;
 
-	while (getline(input, line)) {
-		LinkedList list;
+    char op;
+    int value, index1, index2;
 
-		ss.str("");
-		ss.clear();
-		ss << line;
+    while (getline(input, line)) {
+        LinkedList list;
 
-		while (ss >> op) {
-			switch (op) {
-			case OP_PUSH_BACK:
-				ss >> value;
-				list.push_back(value);
-				break;
-			case OP_PUSH_FRONT:
-				ss >> value;
-				list.push_front(value);
-				break;
-			case OP_INSERT:
-				ss >> index1 >> value;
-				list.insert(index1, value);
-				break;
-			case OP_REMOVE:
-				ss >> index1;
-				list.remove(index1);
-				break;
-			case OP_REVERSE:
-				list.reverse();
-				break;
-			case OP_SWAP:
-				ss >> index1 >> index2;
-				list.swap(index1, index2);
-				break;
-			default:
-				break;
-			}
-		}
+        ss.str("");
+        ss.clear();
+        ss << line;
 
-		list.print();
-	}
+        while (ss >> op) {
+            switch (op) {
+                case OP_PUSH_BACK:
+                    ss >> value;
+                    list.push_back(value);
+                    break;
+                case OP_PUSH_FRONT:
+                    ss >> value;
+                    list.push_front(value);
+                    break;
+                case OP_INSERT:
+                    ss >> index1 >> value;
+                    list.insert(index1, value);
+                    break;
+                case OP_REMOVE:
+                    ss >> index1;
+                    list.remove(index1);
+                    break;
+                case OP_REVERSE:
+                    list.reverse();
+                    break;
+                case OP_SWAP:
+                    ss >> index1 >> index2;
+                    list.swap(index1, index2);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        list.print();
+    }
+
+    return;
 }
 
 int main() {
-	readFile("Sample_Input.txt");
-	//readFile("Hidden_Input.txt");
+    readFile("Sample_Input.txt");
+    // readFile("Hidden_Input.txt");
 
-	return 0;
+    return 0;
 }
