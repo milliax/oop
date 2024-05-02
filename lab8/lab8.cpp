@@ -1,5 +1,5 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 #include <string>
 
@@ -7,50 +7,60 @@
 
 using namespace std;
 
-void readFile(const char* filename)
-{
-	ifstream input(filename);
-	stringstream ss;
+void readFile(const char* filename) {
+    ifstream input(filename);
+    stringstream ss;
 
-	string line;
+    string line;
 
-	int numTestcase, value;
+    int numTestcase, value;
 
-	for (input >> numTestcase, input.ignore(); numTestcase--;) {
-		getline(input, line);
+    getline(input, line);
+    // cin >> numTestcase;
+    // cin.ignore();
 
-		ss.str("");
-		ss.clear();
-		ss << line;
+    ss.str("");
+    ss.clear();
+    ss << line;
+    ss >> numTestcase;
 
-		BinarySearchTree tree;
+    while (numTestcase--) {
+        getline(input, line);
 
-		while (ss >> value) {
-			TreeNode* node = new TreeNode(value);
-			tree.insert(node);
-		}
+        ss.str("");
+        ss.clear();
+        ss << line;
 
-		TreeNode* root = tree.getRoot();
+        BinarySearchTree tree;
 
-		cout << "preorder: ";
-		tree.preorder(root);
-		cout << endl;
+        while (ss >> value) {
+            TreeNode* node = new TreeNode(value);
+            tree.insert(node);
+        }
 
-		cout << "inorder: ";
-		tree.inorder(root);
-		cout << endl;
+        TreeNode* root = tree.getRoot();
 
-		cout << "postorder: ";
-		tree.postorder(root);
-		cout << endl;
+        cout << "preorder: ";
+        tree.preorder(root);
+        cout << endl;
 
-		cout << endl;
-	}
+        cout << "inorder: ";
+        tree.inorder(root);
+        cout << endl;
+
+        cout << "postorder: ";
+        tree.postorder(root);
+        cout << endl;
+
+        // tree.print_tree(root);
+
+        cout << endl;
+    }
 }
 
 int main() {
-	readFile("Sample_Input.txt");
-	//readFile("Hidden_Input.txt");
+    readFile("Sample_Input.txt");
+    // readFile("Hidden_Input.txt");
 
-	return 0;
+    return 0;
 }

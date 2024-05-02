@@ -5,30 +5,29 @@
 
 using namespace std;
 
-struct TreeNode
-{
-	int val;
-	TreeNode* left;
-	TreeNode* right;
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
 
-	TreeNode() : val(0), left(nullptr), right(nullptr) {}
-	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
-class BinarySearchTree
-{
-private:
-	TreeNode* root;
+class BinarySearchTree {
+   private:
+    TreeNode* root;
 
-public:
-	BinarySearchTree() : root(nullptr) {}
+   public:
+    BinarySearchTree() : root(nullptr) {}
 
-	TreeNode* getRoot();
+    TreeNode* getRoot();
 
-	void insert(TreeNode* node);
-	void preorder(TreeNode* root);
-	void inorder(TreeNode* root);
-	void postorder(TreeNode* root);
+    void insert(TreeNode* node);
+    void preorder(TreeNode* root);
+    void inorder(TreeNode* root);
+    void postorder(TreeNode* root);
+    // void print_tree(TreeNode* root);
 };
 
-#endif // !__BINARY_SEARCH_TREE_H__
+#endif  // !__BINARY_SEARCH_TREE_H__
