@@ -35,45 +35,55 @@ void readFile(const char* filename) {
         ss.clear();
         ss << line;
 
+        // cout << "A try" << endl << endl;
         while (ss >> op) {
             switch (op) {
                 case OP_PUSH_BACK:
                     ss >> value;
+                    // cout << "PUSH BACK " << value << endl;
                     list.push_back(value);
                     break;
                 case OP_PUSH_FRONT:
                     ss >> value;
+                    // cout << "FRONT " << value << endl;
                     list.push_front(value);
                     break;
                 case OP_INSERT:
                     ss >> index1 >> value;
+                    // cout << "INSERT " << index1 << " " << value << endl;
                     list.insert(index1, value);
                     break;
                 case OP_REMOVE:
                     ss >> index1;
+                    // cout << "REMOVE " << index1 << endl;
                     list.remove(index1);
                     break;
                 case OP_REVERSE:
+                    // cout << "REVERSE" << endl;
                     list.reverse();
                     break;
                 case OP_SWAP:
                     ss >> index1 >> index2;
+                    // cout << "SWAP " << index1 << " " << index2 << endl;
                     list.swap(index1, index2);
                     break;
                 default:
                     break;
             }
+            // list.print();
         }
 
         list.print();
     }
 
+    
+
     return;
 }
 
 int main() {
-    readFile("Sample_Input.txt");
-    // readFile("Hidden_Input.txt");
+    // readFile("Sample_Input.txt");
+    readFile("Hidden_Input.txt");
 
     return 0;
 }

@@ -33,6 +33,7 @@ void LinkedList::push_front(int x) {
         head = new ListNode(x);
         return;
     }
+
     ListNode* temp = new ListNode(x);
 
     temp->next = head;
@@ -43,6 +44,7 @@ void LinkedList::insert(int index, int x) {
     // Insert a node to the linked list at position "index", the node's
     // value is x.
     //		 The index of the first node in the linked list is 0.
+
 
     if (index == 0) {
         ListNode* ptr = head;
@@ -55,6 +57,9 @@ void LinkedList::insert(int index, int x) {
     ListNode* last_node = head;
 
     for (int i = 0; i < index - 1; ++i) {
+        if(last_node->next == nullptr) {
+            return;
+        }
         last_node = last_node->next;
         // ptr = ptr->next;
     }
@@ -90,6 +95,9 @@ void LinkedList::remove(int index) {
     for (int i = 0; i < index; ++i) {
         pre_node = ptr;
         ptr = ptr->next;
+        if(ptr == nullptr){
+            return;
+        }
     }
 
     ListNode* next_node = ptr->next;
@@ -130,7 +138,6 @@ void LinkedList::swap(int index1, int index2) {
         int temp = index1;
         index1 = index2;
         index2 = temp;
-        return;
     }
 
     // Swap two nodes in the linked list
@@ -146,6 +153,10 @@ void LinkedList::swap(int index1, int index2) {
         }
 
         ptrB = ptrB->next;
+        
+        if(ptrA == nullptr || ptrB == nullptr){
+            return;
+        }
     }
 
     int tmp;
